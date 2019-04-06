@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 int separate_array(char *s, char **dest)
 {
@@ -17,9 +19,32 @@ int separate_array(char *s, char **dest)
 	return (0);
 }
 
+int exe(char **argv)
+{
+	pid_t child_pid;
+
+	child_pid = fork();
+
+	if (child_pid == -1)
+    	{
+		perror("Error:");
+		return (1);
+    	}	
+	if (child_pid == 0)
+	{
+		if (execve(argv[0], argv, NULL) == -1)
+ 		{
+			perror("Error:");
+ 		}
+	}
+	else
+		wait(NULL);
+	return (0);
+}
+
 int main()
 {
-    char *buffer, *token[100];
+    char *buffer, *argv[100];
     size_t bufsize = 32;
     size_t characters;
 
@@ -35,11 +60,8 @@ int main()
 	{    
     		printf("#AndJen$ ");
 		characters = getline(&buffer,&bufsize,stdin);
-		separate_array(buffer, token);
-		if (execve(token[0], token, NULL) == -1)
- 		{
-        		perror("Error:");
- 		}
+		separate_array(buffer, argv);
+		exe(argv);
 
 	}
 	 while (characters != -1);

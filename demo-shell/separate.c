@@ -7,6 +7,7 @@ int separate_array(char *s, char **dest)
 
 	for (count = 0; token != NULL; count++)
 	{
+		printf("%s\n", token);
 		dest[count] = token;
 		token = strtok(NULL, "\n");
 	}	

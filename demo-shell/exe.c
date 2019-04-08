@@ -8,19 +8,21 @@ int exe(char **argv)
 
 	if (child_pid == -1)
     	{
-		perror("Error:");
-		return (1);
+		perror("hsh: ");
+		return (-2);
     	}	
 	if (child_pid == 0)
 	{
 		if (execve(argv[0], argv, NULL) == -1)
- 		{
-			perror("Error:");
- 		}
-		exit(989);
+		{
+			perror("exe Error");
+			exit(123);
+		}
 	}
 	else
+	{
 		wait(NULL);
+	}
 	return (0);
 }
 

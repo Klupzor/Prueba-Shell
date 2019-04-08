@@ -2,14 +2,14 @@
 
 int separate_array(char *s, char **dest)
 {
-	char *token = strtok(s, "\n");
+	char *token, *argument = strtok(s, "\n");
 	int count;
 
+	token = strtok(argument, " ");
 	for (count = 0; token != NULL; count++)
 	{
-		printf("%s\n", token);
 		dest[count] = token;
-		token = strtok(NULL, "\n");
+		token = strtok(NULL, " ");
 	}	
 	dest[count] = 0;
 	return (0);

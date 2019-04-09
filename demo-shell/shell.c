@@ -48,8 +48,8 @@ int main()
 		}
 		else
 		{	
-			printf("se buscara comando\n");
-			search_path(argv[0]);
+			printf("se buscara comando: %s\n", argv[0]);
+			search_path(argv);
 		}
 		if (_strcmp(buffer, "exit") == 0)
 			exit(127);

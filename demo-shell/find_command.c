@@ -8,7 +8,7 @@
  * Return: compare.
  */
 
-int find_command(char *path, char *command) 
+int find_command(char *path, char **command) 
 {
   	DIR *dir;
   	struct dirent *entry;
@@ -18,8 +18,15 @@ int find_command(char *path, char *command)
 	else 
 	{
    		while ((entry = readdir(dir)) != NULL)
-			if (_strcmp(entry->d_name, command) == 0)
-				printf("lo encontro!\n");
+		{
+			if (_strcmp(entry->d_name, command[0]) == 0)
+			{
+				printf("lo encontro: %s\n", command[0]);
+				mk_path(command[0], path);
+				printf("el nuevo: %s\n", command[0]);
+				return (1);
+			}
+		}
     		closedir(dir);
   	}
 	return(0);

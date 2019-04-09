@@ -24,6 +24,7 @@ int find_command(char *path, char **command)
 				printf("lo encontro: %s\n", command[0]);
 				mk_path(command[0], path);
 				printf("el nuevo: %s\n", command[0]);
+				exe(command);
 				return (1);
 			}
 		}

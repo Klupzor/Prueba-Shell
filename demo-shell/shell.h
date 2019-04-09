@@ -18,5 +18,6 @@ int find_command(char *path, char **command);
 char *mk_path(char *command, char *path);
 char *_strdup(char *str);
 char *_findpath();
+char *extract_path();
 
 #endif  

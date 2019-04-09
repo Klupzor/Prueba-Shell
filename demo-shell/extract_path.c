@@ -1,6 +1,6 @@
 #include "shell.h"
 
-char *_findpath()
+char *extract_path()
 {
 	extern char **environ;
 	int i, j = 0;

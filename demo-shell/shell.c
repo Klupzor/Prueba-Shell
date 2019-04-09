@@ -1,5 +1,17 @@
 #include "shell.h"
 
+int search_slash(char *s)
+{
+	int find;
+	
+	for (find = 0; s[find] != '\0'; find++)
+	{
+		if (s[find] == '/')
+			return (1);
+	}
+	return (0);
+}
+
 void handle_sigint(int sig_number) 
 {
 	(void) sig_number;
@@ -29,9 +41,13 @@ int main()
 		if (characters == -1)
 			break;
 		separate_array(buffer, argv);
-		if (exe(argv) == -1)
-			perror("hsh: ");
-
+		if (search_slash(argv[0]) == 1)
+		{
+			if (exe(argv) == -1)
+				perror("hsh: ");
+		}
+		else
+			printf("se buscara comando\n");
 		if (_strcmp(buffer, "exit") == 0)
 			exit(127);
 

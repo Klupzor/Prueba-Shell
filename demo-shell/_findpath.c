@@ -4,7 +4,7 @@ char *_findpath()
 {
 	extern char **environ;
 	int i, j = 0;
-	char *p = "PATH", *find, *copy;
+	char *p = "PATH", *copy;
 	
 
 	for (i = 0; *environ[i]; i++)

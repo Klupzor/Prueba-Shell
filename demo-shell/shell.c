@@ -47,7 +47,10 @@ int main()
 				perror("hsh: ");
 		}
 		else
+		{	
 			printf("se buscara comando\n");
+			search_path(argv[0]);
+		}
 		if (_strcmp(buffer, "exit") == 0)
 			exit(127);
 

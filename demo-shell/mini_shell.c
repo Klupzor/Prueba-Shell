@@ -19,6 +19,14 @@ void handle_sigint(int sig_number)
 	fflush(stdout);
 } 
 
+void handle_exit(char **argv, char *buffer)
+{
+	write(STDOUT_FILENO, "Bye :* \n", 8);
+	free_argv(argv);
+	free(buffer);
+	exit(145);
+}
+
 int main()
 {
 	char *buffer, **argv;
@@ -49,10 +57,10 @@ int main()
 		else
 		{	
 			printf("se buscara comando: %s\n", argv[0]);
+			if (_strcmp(buffer, "exit") == 0)
+				handle_exit(argv, buffer);
 			search_path(argv);
 		}
-		if (_strcmp(buffer, "exit") == 0)
-			exit(127);
 		free_argv(argv);
 	}
 	free(buffer);

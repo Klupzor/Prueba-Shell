@@ -10,6 +10,7 @@
 #include <dirent.h>
 #include <errno.h>
 
+extern char **environ;
 int exe(char **argv);
 int _strcmp(char *s1, char *s2);
 int search_path(char **command);

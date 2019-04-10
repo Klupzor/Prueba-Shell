@@ -8,7 +8,6 @@
 
 char *extract_path()
 {
-	extern char **environ;
 	int i, j = 0;
 	char *p = "PATH", *copy;
 

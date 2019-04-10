@@ -1,23 +1,24 @@
 #include "shell.h"
 
 /**
- * _strcmp - prints concat string whit n bytes.
+ * find_command - commands.
  *
- * @s1: char 1.
- * @s2: char 2.
- * Return: compare.
+ * @path: is the directory.
+ * @command: is the command.
+ * Return: succes 0, fail 1.
  */
 
-int find_command(char *path, char **command) 
+int find_command(char *path, char **command)
 {
-  	DIR *dir;
-  	struct dirent *entry;
+	DIR *dir;
+	struct dirent *entry;
 
-  	if ((dir = opendir(path)) == NULL)
-    	perror("opendir() error");
-	else 
+	dir = opendir(path);
+	if (dir == NULL)
+		perror("opendir() error");
+	else
 	{
-   		while ((entry = readdir(dir)) != NULL)
+		while ((entry = readdir(dir)) != NULL)
 		{
 			if (_strcmp(entry->d_name, command[0]) == 0)
 			{
@@ -28,7 +29,7 @@ int find_command(char *path, char **command)
 				return (1);
 			}
 		}
-    		closedir(dir);
-  	}
-	return(0);
+		closedir(dir);
+	}
+	return (0);
 }

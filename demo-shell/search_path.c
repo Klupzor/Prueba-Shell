@@ -1,7 +1,10 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
 #include "shell.h"
+
+/**
+ *search_path - find the direction.
+ *@command: is the instruction to be found.
+ *Return: always 0.
+*/
 
 int search_path(char **command)
 {
@@ -16,7 +19,7 @@ int search_path(char **command)
 	{
 		find = find_command(path, command);
 		path = strtok(NULL, ":");
-	}			
+	}
 	return (0);
 }
 

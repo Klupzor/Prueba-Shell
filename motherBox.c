@@ -73,11 +73,12 @@ int main()
 	//addBox(motherBox, "segundo", 1);
 	//addBox(motherBox, "tercero", 2);
 	}
-	//addBox(motherBox, "modificado", 0);
-	for (i = 0 ; i < size ; i++)
+	addBox(motherBox, "modificado", 0);
+	for (i = 0 ; motherBox[i]; i++)
 	{
 		printf("on mother: %s\n", motherBox[i]);
 	}
+
 	free_motherBox(motherBox, size);
 	return (0);
 }

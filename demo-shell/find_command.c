@@ -22,7 +22,7 @@ int find_command(char *path, char **command)
 			if (_strcmp(entry->d_name, command[0]) == 0)
 			{
 				printf("lo encontro: %s\n", command[0]);
-				mk_path(command[0], path);
+				mk_path(command, path);
 				printf("el nuevo: %s\n", command[0]);
 				exe(command);
 				return (1);

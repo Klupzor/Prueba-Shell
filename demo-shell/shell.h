@@ -10,7 +10,6 @@
 #include <dirent.h>
 #include <errno.h>
 
-int separate_array(char *s, char **dest);
 int exe(char **argv);
 int _strcmp(char *s1, char *s2);
 int search_path(char **command);
@@ -22,5 +21,7 @@ char *extract_path();
 char **split(char *input);
 void free_argv(char **array);
 int add_argv(char **argv, char *str, int pos);
+void handle_exit(char **argv, char *buffer);
+int search_slash(char *input);
 
 #endif  

@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ *exe - execute.
+ *@argv: are the arguments.
+ *Return: always 0.
+*/
+
 int exe(char **argv)
 {
 	pid_t child_pid;
@@ -7,10 +13,10 @@ int exe(char **argv)
 	child_pid = fork();
 
 	if (child_pid == -1)
-    	{
+	{
 		perror("hsh: ");
 		return (-2);
-    	}	
+	}
 	if (child_pid == 0)
 	{
 		if (execve(argv[0], argv, NULL) == -1)

@@ -22,6 +22,8 @@ char **mk_path(char **command, char *path)
 	cp[size_path] = '/';
 	size_path++;
 	for (size_cmd = 0 ; command[0][size_cmd] != '\0' ; size_cmd++)
+	{
+		cp[size_cmd + size_path] = command[0][size_cmd];
 	}
 	add_argv(command, cp, 0);
 	free(cp);

@@ -11,7 +11,7 @@ char **mk_path(char **command, char *path)
 	int size_cmd, size_path, stm;
 	char *cp;
 
-	stm = 100;
+	stm = 1024;
 	cp = malloc(sizeof(char) * stm);
 	if(!cp)
 		return(0);
@@ -24,6 +24,7 @@ char **mk_path(char **command, char *path)
 	size_path++;
 	for (size_cmd = 0 ; command[0][size_cmd] != '\0' ; size_cmd++)
 	{
+		//printf("cp: %s\n", cp);
 		cp[size_cmd + size_path] = command[0][size_cmd];
 	}
 	add_argv(command, cp, 0);

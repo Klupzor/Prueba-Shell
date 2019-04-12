@@ -12,4 +12,5 @@ void handle_path()
 	path[size_path] = '\n';
 	size_path++;
 	write(STDOUT_FILENO, path, size_path);
+	free(path);
 }

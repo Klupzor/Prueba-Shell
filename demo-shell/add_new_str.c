@@ -14,10 +14,8 @@ char **add_new_str(char **array, char *str)
 
 	for (recor = 0; array[recor] != NULL; recor++)
 	{
-		printf("antes de: %s\n", array[recor]);
 	}
 	recor++;
-	printf("New rooms: %i\n", recor);
 	new = malloc(sizeof(char *) * (recor + 1));
 	if (new == NULL)
 	{
@@ -27,7 +25,6 @@ char **add_new_str(char **array, char *str)
 
 	if (array[0] == NULL)
 	{
-		printf("Es el primero\n");
 		new[0] = _strdup(str);
 		new[1] = array[0];
 	}
@@ -44,7 +41,6 @@ char **add_new_str(char **array, char *str)
 
 	for(recor = 0; new[recor]; recor++)
 	{
-		printf("despues de: %s\n", new[recor]);
 	}
 
 	free(array);

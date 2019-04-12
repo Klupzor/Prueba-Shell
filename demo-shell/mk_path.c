@@ -8,24 +8,35 @@
 
 char **mk_path(char **command, char *path)
 {
-	int size_cmd, size_path, stm;
-	char *cp;
+	int size_cmd, size_path, tsize, cnew, ccom;
+	char *new;
 
-	stm = 1024;
-	cp = malloc(sizeof(char) * stm);
-	if (!cp)
-		return (0);
-	for (size_path = 0; path[size_path] != '\0'; size_path++)
+	for (size_path = 1; path[size_path] != '\0'; size_path++)
 	{
-		cp[size_path] = path[size_path];
 	}
-	cp[size_path] = '/';
-	size_path++;
-	for (size_cmd = 0 ; command[0][size_cmd] != '\0' ; size_cmd++)
+	for (size_cmd = 1 ; command[0][size_cmd] != '\0' ; size_cmd++)
 	{
-		cp[size_cmd + size_path] = command[0][size_cmd];
 	}
-	add_argv(command, cp, 0);
-	free(cp);
+
+	tsize = size_path + size_cmd + 2;
+	new = malloc(sizeof(char) * tsize);
+	if (new == NULL)
+		perror("Error creatin malloc on mk_path");
+
+	for (cnew = 0; path[cnew] != '\0'; cnew++)
+        {
+		new[cnew] = path[cnew];
+        }
+	new[cnew] = '/';
+	cnew++;
+	for (ccom = 0; command[0][ccom] != '\0'; ccom++, cnew++)
+	{
+		new[cnew] = command[0][ccom];
+	}
+	new[cnew] = '\0';
+	
+	free(command[0]);
+	command[0] = new;
+
 	return (command);
 }

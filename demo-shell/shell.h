@@ -21,7 +21,6 @@ char *_findpath();
 char *extract_path();
 char **split(char *input);
 void free_argv(char **array);
-int add_argv(char **argv, char *str, int pos);
 void handle_exit(char **argv, char *buffer);
 int search_slash(char *input);
 void handle_path();

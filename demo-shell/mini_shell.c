@@ -27,7 +27,6 @@ int main(void)
 	size_t bufsize = 32;
 	ssize_t characters = 0;
 
-
 	printf("Shell start! *\\(^-^)/* \n");
 	while (characters != -1)
 	{
@@ -41,7 +40,10 @@ int main(void)
 		write(STDOUT_FILENO, "(^.^)/$ ", 8);
 		characters = getline(&buffer, &bufsize, stdin);
 		if (characters == -1)
+		{
+			free(buffer);
 			break;
+		}
 		argv = split(buffer);
 		if (search_slash(argv[0]) == 1)
 		{

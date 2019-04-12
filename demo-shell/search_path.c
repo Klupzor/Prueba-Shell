@@ -20,6 +20,7 @@ int search_path(char **command)
 		find = find_command(path, command);
 		path = strtok(NULL, ":");
 	}
+	free(copy);
 	return (0);
 }
 

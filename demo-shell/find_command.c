@@ -10,26 +10,19 @@
 
 int find_command(char *path, char **command)
 {
-	DIR *dir;
-	struct dirent *entry;
+	struct stat fileStat;
+	char *dir;
 
-	dir = opendir(path);
-	if (dir == NULL)
-		perror("opendir() error");
-	else
+	dir = mk_path(command[0], path);
+	printf("buscando: %s\n", dir);
+	if (stat(dir, &fileStat) < 0)
 	{
-		while ((entry = readdir(dir)) != NULL)
-		{
-			if (_strcmp(entry->d_name, command[0]) == 0)
-			{
-				printf("lo encontro: %s\n", command[0]);
-				mk_path(command, path);
-				printf("el nuevo: %s\n", command[0]);
-				exe(command);
-				return (1);
-			}
-		}
-		closedir(dir);
+		free(dir);
+		return (0);
 	}
-	return (0);
+
+	printf("lo encontro: %s\n", command[0]);
+	mod_command(dir, command);
+	exe(command);
+	return (1);
 }

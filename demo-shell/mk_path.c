@@ -6,7 +6,7 @@
  * Return: Always 0.
  */
 
-char **mk_path(char **command, char *path)
+char *mk_path(char *command, char *path)
 {
 	int size_cmd, size_path, tsize, cnew, ccom;
 	char *new;
@@ -14,7 +14,7 @@ char **mk_path(char **command, char *path)
 	for (size_path = 1; path[size_path] != '\0'; size_path++)
 	{
 	}
-	for (size_cmd = 1 ; command[0][size_cmd] != '\0' ; size_cmd++)
+	for (size_cmd = 1 ; command[size_cmd] != '\0' ; size_cmd++)
 	{
 	}
 
@@ -29,14 +29,10 @@ char **mk_path(char **command, char *path)
         }
 	new[cnew] = '/';
 	cnew++;
-	for (ccom = 0; command[0][ccom] != '\0'; ccom++, cnew++)
+	for (ccom = 0; command[ccom] != '\0'; ccom++, cnew++)
 	{
-		new[cnew] = command[0][ccom];
+		new[cnew] = command[ccom];
 	}
 	new[cnew] = '\0';
-	
-	free(command[0]);
-	command[0] = new;
-
-	return (command);
+	return (new);
 }

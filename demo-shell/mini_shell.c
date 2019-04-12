@@ -27,16 +27,16 @@ int main(void)
 	size_t bufsize = 32;
 	ssize_t characters = 0;
 
-	buffer = (char *)malloc(bufsize * sizeof(char));
-	if (buffer == NULL)
-	{
-		perror("Unable to allocate buffer");
-		exit(1);
-	}
-	buffer =  _strdup("");
+
 	printf("Shell start! *\\(^-^)/* \n");
 	while (characters != -1)
 	{
+		buffer = (char *)malloc(bufsize * sizeof(char));
+		if (buffer == NULL)
+		{
+			perror("Unable to allocate buffer");
+			exit(1);
+		}
 		signal(SIGINT, handle_sigint);
 		write(STDOUT_FILENO, "(^.^)/$ ", 8);
 		characters = getline(&buffer, &bufsize, stdin);
@@ -55,7 +55,7 @@ int main(void)
 				search_path(argv);
 		}
 		free_argv(argv);
+		free(buffer);
 	}
-	free(buffer);
 	return (0);
 }

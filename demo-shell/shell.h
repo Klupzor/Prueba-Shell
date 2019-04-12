@@ -27,5 +27,6 @@ int search_slash(char *input);
 void handle_path();
 int catch_binfunc(char *buffer, char **argv);
 char **add_new_str(char **array, char *str);
+char **create_container(void);
 
 #endif

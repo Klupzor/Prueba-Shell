@@ -5,7 +5,7 @@
  * Return: success 0, fail -1.
 */
 
-int create_container(void)
+char **create_container(void)
 {
 	char **array;
 	
@@ -13,10 +13,9 @@ int create_container(void)
 	if (array == NULL)
 	{
 		perror("Error at create container: ");
-		return (-1);
+		return (0);
 	}
-
 	array[0] = _strdup(NULL);
 
-	return (0);
+	return (array);
 }

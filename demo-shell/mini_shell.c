@@ -25,7 +25,7 @@ int main(void)
 {
 	char *buffer, **argv;
 	size_t bufsize = 32;
-	ssize_t characters;
+	ssize_t characters = 0;
 
 	buffer = (char *)malloc(bufsize * sizeof(char));
 	if (buffer == NULL)
@@ -33,7 +33,7 @@ int main(void)
 		perror("Unable to allocate buffer");
 		exit(1);
 	}
-
+	buffer =  _strdup("");
 	printf("Shell start! *\\(^-^)/* \n");
 	while (characters != -1)
 	{
@@ -51,9 +51,8 @@ int main(void)
 		else
 		{
 			printf("se buscara comando: %s\n", argv[0]);
-			if (_strcmp(buffer, "exit") == 0)
-				handle_exit(argv, buffer);
-			search_path(argv);
+			if (catch_binfunc(buffer, argv) == 0)
+				search_path(argv);
 		}
 		free_argv(argv);
 	}

@@ -24,5 +24,8 @@ void free_argv(char **array);
 int add_argv(char **argv, char *str, int pos);
 void handle_exit(char **argv, char *buffer);
 int search_slash(char *input);
+void handle_path();
+int catch_binfunc(char *buffer, char **argv);
+char **add_new_str(char **array, char *str);
 
-#endif  
+#endif

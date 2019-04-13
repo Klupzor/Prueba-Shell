@@ -10,7 +10,7 @@
 void handle_sigint(int sig_number)
 {
 	(void) sig_number;
-	write(STDOUT_FILENO, "\n(^.^)/$ ", 9);
+	miniPrint("\n(^.^)/$ ");
 	fflush(stdout);
 }
 
@@ -27,7 +27,7 @@ int main(void)
 	size_t bufsize = 32;
 	ssize_t characters = 0;
 
-	printf("Shell start! *\\(^-^)/* \n");
+	miniPrint("Shell start! *\\(^-^)/* \n");
 	while (characters != -1)
 	{
 		buffer = (char *)malloc(bufsize * sizeof(char));
@@ -37,7 +37,7 @@ int main(void)
 			exit(1);
 		}
 		signal(SIGINT, handle_sigint);
-		write(STDOUT_FILENO, "(^.^)/$ ", 8);
+		miniPrint("(^.^)/$ ");
 		characters = getline(&buffer, &bufsize, stdin);
 		if (characters == -1)
 		{
@@ -51,8 +51,7 @@ int main(void)
 				perror("hsh: ");
 		}
 		else
-		{
-			printf("se buscara comando: %s\n", argv[0]);
+		{	
 			if (catch_binfunc(buffer, argv) == 0)
 				search_path(argv);
 		}

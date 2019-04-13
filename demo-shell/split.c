@@ -12,7 +12,7 @@ char **split(char *input)
 	int temp_size;
 
 	argv = create_container();
-	
+
 	strtok(input, "\n");
 	token = strtok(input, " ");
 	for (temp_size = 0; token != NULL; temp_size++)

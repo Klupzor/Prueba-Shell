@@ -1,12 +1,17 @@
 # include "shell.h"
 
-void handle_path()
+/**
+ * handle_path - print path.
+ * Return: nothing.
+ */
+
+void handle_path(void)
 {
 	char *path;
 	int size_path;
 
 	path = extract_path();
-	for(size_path = 0 ; path[size_path] != '\0' ; size_path++)
+	for (size_path = 0; path[size_path] != '\0'; size_path++)
 	{
 	}
 	path[size_path] = '\n';

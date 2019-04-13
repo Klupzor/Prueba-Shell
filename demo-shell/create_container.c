@@ -8,7 +8,7 @@
 char **create_container(void)
 {
 	char **array;
-	
+
 	array = malloc(sizeof(char *) * 1);
 	if (array == NULL)
 	{

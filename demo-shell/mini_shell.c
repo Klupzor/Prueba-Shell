@@ -51,7 +51,7 @@ int main(void)
 				perror("hsh: ");
 		}
 		else
-		{	
+		{
 			if (catch_binfunc(buffer, argv) == 0)
 				search_path(argv);
 		}

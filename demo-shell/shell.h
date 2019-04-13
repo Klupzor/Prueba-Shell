@@ -30,6 +30,6 @@ char **add_new_str(char **array, char *str);
 char **create_container(void);
 void mod_command(char *path, char **command);
 int miniPrint(char *str);
-
+void cmd_not_found(char *cmd);
 
 #endif

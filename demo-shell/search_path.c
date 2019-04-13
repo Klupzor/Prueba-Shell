@@ -8,16 +8,16 @@
 
 int search_path(char **command)
 {
-	int find = 0;
 	char *path, *copy;
 
 	copy = extract_path();
 	copy = strtok(copy, "=");
 	path = strtok(NULL, "=");
 	path = strtok(path, ":");
-	while (path != NULL && find != 1)
+	while (path != NULL)
 	{
-		find = find_command(path, command);
+		if (find_command(path, command) == 1)
+			return (1);
 		path = strtok(NULL, ":");
 	}
 	free(copy);

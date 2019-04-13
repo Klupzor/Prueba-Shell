@@ -53,7 +53,8 @@ int main(void)
 		else
 		{
 			if (catch_binfunc(buffer, argv) == 0)
-				search_path(argv);
+				if (search_path(argv) == 0)
+					cmd_not_found(argv[0]);
 		}
 		free_argv(argv);
 		free(buffer);

@@ -19,7 +19,7 @@ int find_command(char *path, char **command);
 char *mk_path(char *command, char *path);
 char *_strdup(char *str);
 char *_findpath();
-char *extract_path();
+char *extract_path(char *var);
 char **split(char *input);
 void free_argv(char **array);
 void handle_exit(char **argv, char *buffer);
@@ -31,5 +31,6 @@ char **create_container(void);
 void mod_command(char *path, char **command);
 int miniPrint(char *str);
 void cmd_not_found(char *cmd);
+void penv();
 
 #endif

@@ -10,14 +10,17 @@ int search_path(char **command)
 {
 	char *path, *copy;
 
-	copy = extract_path();
+	copy = extract_path("PATH");
 	copy = strtok(copy, "=");
 	path = strtok(NULL, "=");
 	path = strtok(path, ":");
 	while (path != NULL)
 	{
 		if (find_command(path, command) == 1)
+		{
+			free(copy);
 			return (1);
+		}
 		path = strtok(NULL, ":");
 	}
 	free(copy);

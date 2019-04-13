@@ -10,7 +10,7 @@ void handle_path(void)
 	char *path;
 	int size_path;
 
-	path = extract_path();
+	path = extract_path("PATH");
 	for (size_path = 0; path[size_path] != '\0'; size_path++)
 	{
 	}

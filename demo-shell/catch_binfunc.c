@@ -15,6 +15,11 @@ int catch_binfunc(char *buffer, char **argv)
 		handle_exit(argv, buffer);
 		return (1);
 	}
+	else if (_strcmp(buffer, "env") == 0)
+	{
+		penv();
+		return (1);
+	}
 	else if (_strcmp(buffer, "$PATH") == 0)
 	{
 		handle_path();

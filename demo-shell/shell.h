@@ -32,5 +32,6 @@ void mod_command(char *path, char **command);
 int miniPrint(char *str);
 void cmd_not_found(char *cmd);
 void penv();
+int _atoi(char *s);
 
 #endif

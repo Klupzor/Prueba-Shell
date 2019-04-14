@@ -1,8 +1,6 @@
 #include <string.h>
 #include <stdio.h>
 
-
-
 char *_strtok(char *str, const char *delim)
 {
 	int cs, cd, postok = 0;
@@ -17,9 +15,10 @@ char *_strtok(char *str, const char *delim)
 	}
 	if (token == NULL)
 	{
-		printf("es nulo\n");
+		//printf("es nulo\n");
 		return (NULL);
 	}
+	//printf("new token: %s\n", token);
 	for (cd = 0 ; delim[cd] != '\0' ; cd++)
 	{
 		for (cs = 0 ; token[cs] != '\0' ; cs++)
@@ -28,40 +27,44 @@ char *_strtok(char *str, const char *delim)
 			{
 				token++;
 			}
-			if (token[1] == '\0' && token[2] == '\0')
+			if (token[0] == '\0')
 			{
-				printf("no hay mas \n");
+				//printf("no hay mas \n");
 				tmp = NULL;
-				return(token);
+				return(NULL);
 			}
 			if (delim[cd] == token[cs])
 			{
-				//printf("leyendo: %s\n", token);
+				//printf("pos: %i\n", cs);
 				token[cs] = '\0';
 				tmp = token;
 				//postok = cs + 1;
-				printf("token: %s ", token);
+				//printf("token: %s ", token);
 				tmp = tmp + cs + 1;
 				//token = token + postok;
-				printf("tmp: %s\n", tmp);
+				//printf("tmp: %s\n", tmp);
 				return (token);
 			}
 		}
 	}
-	return (NULL);
+	if(tmp[0] == '\0')
+		token = NULL;
+	tmp = NULL;
+	return (token);
 }
 
 void main()
 {
 	char *token;
-	char txt[] ="1c112cacc4aaaa asdfg";
-
+	int ct = 0;
+	char txt[] ="cc34ccc4aaaa asdfg";
 	printf("txt: %s\n", txt);
 	token = _strtok(txt, "c");
-	token = _strtok(NULL, "c");
-	token = _strtok(NULL, "c");
-	token = _strtok(NULL, "c");
-	token = _strtok(NULL, "c");
-	token = _strtok(NULL, "c");
+	while (ct < 4)
+	{
+		printf("token: %s\n", token);
+		token = _strtok(NULL, "c");
+		ct++;
+	}
 
 }
